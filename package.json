@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "cors": "^2.8.5",
+    "knex": "^2.3.0",
+    "nodemon": "^2.0.20",
+    "pg": "^8.8.0",
+    "restify": "^8.6.1",
+    "restify-cors-middleware2": "^2.1.2",
+    "restify-errors": "^8.0.2"
+  }
+}
