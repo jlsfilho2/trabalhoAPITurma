@@ -31,14 +31,15 @@ const knex = require('knex')({
     }
 });
 
-servidor.get('/produtos', (req,res,next) =>{
+servidor.get('/usuarios', (req,res,next) =>{
+    console.log("lendo todos usuários")
         knex('usuarios').then((dados)=>{ res.send(dados) },next);
 });
 
 
-servidor.get('/produtos/:idProd', (req,res,next)=> {
-    const idProd = req.params.idProd;
-    knex('usuarios').where('id',idProd)
+servidor.get('/usuarios/:idUser', (req,res,next)=> {
+    const idUser = req.params.idUser;
+    knex('usuarios').where('id',idUser)
     .first().then((dados)=> {
         if(!dados)
         return res.send(new erros.BadRequestError("usuario não encontrado"));
@@ -46,20 +47,22 @@ servidor.get('/produtos/:idProd', (req,res,next)=> {
     },next);
 });
 
-servidor.del('/produtos/:idProd', (req,res,next)=> {
-    const idProd = req.params.idProd;
-    knex('usuarios').where('id',idProd)
+servidor.del('/usuarios/:idUser', (req,res,next)=> {
+    const idUser = req.params.idUser;
+    console.log("deletando "  +idUser);
+    knex('usuarios').where('id',idUser)
     .delete().then((dados)=> {
         if(!dados)
         return res.send(new erros.BadRequestError("usuario não encontrado"));
-        else res.send(dados)
     },next);
 });
 
-servidor.put('/produtos/:idProd', (req,res,next)=> {
-    const idProd = req.params.idProd;
-   
-    knex('usuarios').where('id',idProd)
+servidor.put('/usuarios/:idUser', (req,res,next)=> {
+    const idUser = req.params.idUser;
+    console.log("editando "  +req.body.nome + ", email " + req.body.email);
+    let nome = req.body.nome;
+    let email = req.body.email;
+    knex('usuarios').where('id',idUser)
     .update({
         nome,
         email
@@ -73,7 +76,7 @@ servidor.put('/produtos/:idProd', (req,res,next)=> {
     });
 
 
-servidor.post('/produtos', (req,res,next)=> {
+servidor.post('/usuarios', (req,res,next)=> {
    // console.log("body " + JSON.parse(req));
     console.log("inserindo "  +req.body.nome + ", email " + req.body.email);
     let nome = req.body.nome;

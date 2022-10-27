@@ -12,12 +12,21 @@
     <div id="criaUsuario">
         Nome: <input type="text" id="nome"></input>
         Email: <input type="text" id="email"></input>
-        <button id="btnCriar" onclick="criar()">Criar</button>
+        <input type="hidden" id="idUser"></input>
+    <button id="btnSalvar" onclick="salvar()">Salvar</button>
     </div>
     <button id="btnListaTodos" onclick="lerTodos()">Ler Todos</button>
-    <div id="ListaUsuarios">
-
+    <div id="statusConexao"></div>
+    <div >
+        <table border="1" id="ListaUsuarios">
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </table>
     </div>
-
 </body>
 </html>
